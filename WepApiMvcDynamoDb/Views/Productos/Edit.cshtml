@@ -1,0 +1,21 @@
+﻿@model WepApiMvcDynamoDb.Models.Producto
+
+<h1>Edit Producto</h1>
+<hr />
+<form method="post" asp-action="Edit">
+    <input type="hidden" asp-for="Id" />
+    <label>Nombre: </label>
+    <input type="text" asp-for="Name" class="form-control" />
+    <br />
+    <label>Precio: </label>
+    <input type="text" asp-for="Price" class="form-control" />
+    <br />
+    <label>Stock: </label>
+    <input type="text" asp-for="Stock" class="form-control" />
+    <br />
+    <label>Proveedores: </label>
+    <input type="text" asp-for="Providers" class="form-control" />
+    <br />
+    <input type="submit" value="Guardar" class="btn btn-primary" />
+    <a class="btn btn-primary" asp-action="Index">Back to List</a>
+</form>

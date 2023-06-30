@@ -1,0 +1,73 @@
+﻿@model IEnumerable<WepApiMvcDynamoDb.Models.Producto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Listado de Productos</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Create New</a>
+</p>
+</br>
+@using (Html.BeginForm("Search", "Productos", FormMethod.Get))
+{
+    <input type="text" name="searchTerm" placeholder="Buscar por nombre" />
+    <input type="submit" value="Buscar" />
+}
+
+@if (Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Nombre
+                </th>
+                <th>
+                    Precio
+                </th>
+                <th>
+                    Stock
+                </th>
+                <th>
+                    Proveedores
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Id
+                    </td>
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        @item.Price
+                    </td>
+                    <td>
+                        @item.Stock
+                    </td>
+                    <td>
+                        @item.Providers
+                    </td>
+                    <td>
+                        <a class="btn btn-primary" asp-controller="Productos" asp-action="Details" asp-route-id="@item.Id">Editar</a>
+                        <a class="btn btn-primary" asp-controller="Productos" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p style="padding-top: 20px;">No se encontraron productos por ese nombre.</p>
+}
